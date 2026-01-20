@@ -1,0 +1,11 @@
+.vscode/**
+*.txt
+executable
+app
+server
+sim_server
+fake_request_manager
+request_manager
+input
+output
+secrets.json
