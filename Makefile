@@ -15,8 +15,8 @@ simulator: $(LOGGER) registered/simple_sim/1.0/simple_sim.cpp
 request_manager: $(LOGGER) request_manager.cpp include/settings/request_manager.hpp
 	$(CXX) $(CXXFLAGS) $(LOGGER) request_manager.cpp -o request_manager $(BOOSTFLAGS) $(SPDLOGFLAGS)
 
-server: $(LOGGER) server.cpp include/settings/sim_server.hpp include/types/sim_server.hpp
-	$(CXX) $(CXXFLAGS) $(LOGGER) server.cpp -o server $(BOOSTFLAGS_SERVER) $(SPDLOGFLAGS)
+server: $(LOGGER) simulation_server.cpp include/settings/sim_server.hpp include/types/sim_server.hpp
+	$(CXX) $(CXXFLAGS) $(LOGGER) simulation_server.cpp -o simulation_server $(BOOSTFLAGS_SERVER) $(SPDLOGFLAGS)
 
 app: $(LOGGER) app.cpp include/settings/app.hpp include/types/app.hpp
 	$(CXX) $(CXXFLAGS) $(LOGGER) app.cpp -o app $(BOOSTFLAGS) $(SPDLOGFLAGS)

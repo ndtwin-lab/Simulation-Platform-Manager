@@ -10,7 +10,7 @@ int main(int argc, char *argv[])
     // Number of parameters to check
     if (argc < 3)
     {
-        std::cerr << "用法: " << argv[0] << " <inputfilepath> <outputfilepath>\n";
+        std::cerr << "Usage: " << argv[0] << " <inputfilepath> <outputfilepath>\n";
         return 1;
     }
 
