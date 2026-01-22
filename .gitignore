@@ -1,5 +1,4 @@
 .vscode/**
-*.txt
 executable
 app
 server
