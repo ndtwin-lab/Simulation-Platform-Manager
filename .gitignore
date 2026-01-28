@@ -1,5 +1,4 @@
 .vscode/**
-executable
 app
 server
 sim_server
