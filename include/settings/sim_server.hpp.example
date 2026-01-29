@@ -5,7 +5,7 @@
 
 namespace fs = std::filesystem;
 
-inline const std::string request_manager_ip = "10.10.10.250";
+inline const std::string request_manager_ip = "localhost";
 inline const std::string request_manager_port = "8000";
 inline const std::string request_manager_target = "/ndt/simulation_completed";
 
@@ -13,7 +13,7 @@ inline const std::string request_manager_target = "/ndt/simulation_completed";
 inline const uint32_t sim_server_port = 9000;
 inline const std::string sim_server_target = "/submit";
 
-inline const std::string nfs_server_ip = "10.10.10.250";
+inline const std::string nfs_server_ip = "localhost";
 inline const std::string nfs_server_dir = "/srv/nfs/sim";
 inline const fs::path nfs_mnt_dir = "/mnt/nfs/sim";
 

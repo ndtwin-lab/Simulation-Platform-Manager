@@ -7,7 +7,16 @@ BOOSTFLAGS = -lpthread -lboost_system -lboost_thread
 BOOSTFLAGS_SERVER = -lpthread -lboost_system -lboost_thread -lboost_filesystem
 LOGGER = Logger.cpp
 
-all: simulator request_manager server app
+# --- config bootstrap (minimal) ---
+SIM_SERVER_HPP := include/settings/sim_server.hpp
+SIM_SERVER_EX  := include/settings/sim_server.hpp.example
+
+$(SIM_SERVER_HPP):
+	@test -f "$@" || (cp "$(SIM_SERVER_EX)" "$@" && echo "[GEN] $@ created from $(SIM_SERVER_EX)")
+
+
+all: $(SIM_SERVER_HPP) simulator request_manager server app
+
 
 simulator: $(LOGGER) registered/simple_sim/1.0/simple_sim.cpp
 	$(CXX) $(CXXFLAGS) $(LOGGER) registered/simple_sim/1.0/simple_sim.cpp -o registered/simple_sim/1.0/executable $(SPDLOGFLAGS)
@@ -15,8 +24,10 @@ simulator: $(LOGGER) registered/simple_sim/1.0/simple_sim.cpp
 request_manager: $(LOGGER) request_manager.cpp include/settings/request_manager.hpp
 	$(CXX) $(CXXFLAGS) $(LOGGER) request_manager.cpp -o request_manager $(BOOSTFLAGS) $(SPDLOGFLAGS)
 
-server: $(LOGGER) simulation_platform_manager.cpp include/settings/sim_server.hpp include/types/sim_server.hpp
+
+server: $(LOGGER) simulation_platform_manager.cpp $(SIM_SERVER_HPP) include/types/sim_server.hpp
 	$(CXX) $(CXXFLAGS) $(LOGGER) simulation_platform_manager.cpp -o simulation_platform_manager $(BOOSTFLAGS_SERVER) $(SPDLOGFLAGS)
+
 
 app: $(LOGGER) app.cpp include/settings/app.hpp include/types/app.hpp
 	$(CXX) $(CXXFLAGS) $(LOGGER) app.cpp -o app $(BOOSTFLAGS) $(SPDLOGFLAGS)

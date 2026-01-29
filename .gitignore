@@ -8,3 +8,5 @@ input
 output
 secrets.json
 simulation_platform_manager
+
+include/settings/sim_server.hpp
